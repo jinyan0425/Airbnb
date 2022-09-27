@@ -5,14 +5,18 @@
 </div>
 
 ## Project Overview
-This project aims to understand determinants of Airbnb listing price, using the listing data with 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 to 2022-09-16.
+This project aims to understand the determinants of Airbnb listing price, using the listing data with 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 and 2022-09-16.
 
-## Project Motivation and Research Question
-The sharing economy has boomed in the past decade aimd the concern on sustainability and embrace of sharing among younger generation. One of the unicorns in the sharing economy is Airbnb -- the largest accommodation/lodge sharing platform in the world. Airbnb was founded in 2008, and grew phenomenally. To date, it is operated in over 220 countries and regions and in over 100,000 cities with 5.6 million actie listings and 150 million users. More importantly, it contributes to the prosperity of local economy, for example, alone in 2019, the host-guest community created over $117 billion economic impact across 30 citites([Meyer, 2022](https://www.thezebra.com/resources/home/airbnb-statistics/)).
+## Project Motivation
+Airbnb was founded in 2008 and has grown phenomenally to be the world’s largest accommodation/lodge sharing platform. It is operated in over 220 countries and regions and over 100,000 cities with 5.6 million active listings and 150 million users. For more statistics about Airbnb’s market size, user size, and economic impact, please read [this artile](https://www.thezebra.com/resources/home/airbnb-statistics/)).
 
-It is not surprising that there is burgeoning research on Airbnb and price is always the centre of any inquiries, because it is so critical to the platform, hosts and guests. Price is the major determinant of the lisiting's attractiveness, and guests' accommodation decisions, such as whether to choose Airbnb over other competitive accommodation options (e.g., traditional hotels, other platforms). This ultimately affects hosts' income and their future engagement in Airbnb, the health of the host-guest sharing community, as well as the platform's revenue.
+Understanding listing price is critical to the platform, hosts, and guests. Price is a significant determinant of a listing’s attractiveness and guests’ accommodation decisions which ultimately affects hosts’ income, the platform’s revenue, and the health of the host-guest sharing community and local economies. More broadly, it could profoundly influence hosts’ and guests’ long-term engagement in accommodation sharing (not limited to Airbnb) and the development of the sharing economy
 
-**To investigate determinants of price, this project collects 236,823 unique listing information in 31 cities and 19 states in the United States between 2022-06-08 to 2022-09-16 from [Kaggle](http://insideairbnb.com/get-the-data/).It focuses on how enviromental-related factors (e.g., regional difference), host-realted factors (e.g., host tenure) and the accomodation-related factors (e.g., lodge capacity) affect price.**
+## Project Goal
+**The primary goal of this project is to understand the determinants of listing price or to predict listing price.** More specifically, it aims to study how:
+1. Environment-related factors (e.g., regional difference)
+2. Lodge-related factors (e.g., lodge capacity, lodge type)
+3. Host-related factors (e.g., host tenure) **affect listing price**
 
 ## Project Method
 
@@ -24,39 +28,42 @@ It is not surprising that there is burgeoning research on Airbnb and price is al
 - ```matplotlib``` and ```seaborn```for virsualizing
 
 ### Data Collection and Wrangling
-Data were collected from [Kaggle](http://insideairbnb.com/get-the-data/) based urls. Only US data were collected in this project. Data dictionary and other supplementary information can also be found on the page.
 
-The critical steps in data wrangling are:
+#### Collection
+Data were collected from [Kaggle](http://insideairbnb.com/get-the-data/) based on urls. Only US data were collected in this project. The data dictionary and other supplementary information can also be found on the page.
+
+#### Wrangling
+The critical steps in data wrangling include:
 1. Drop duplicated listings (N = 4577)
-2. Deal with missing values: 1) impute missing values with the mean for quantitative rating-related variables and host-related variables because the variance of these variables are small yet the missing proportion is large (15-20% are missing); 2)impute missing values with the mode for the categorical host-related variable (i.e., ```response time```), because the majority of this variable fall into one category (77%) yet the missing proportion is large (15-20% are missing); 3) drop the missing values for other variables where the missing proportion is small (less than 2%) and the loss of data is negligible
+2. Deal with missing values: 1) impute missing values with the mean for quantitative rating-related variables and host-related variables because the variance of these variables is small, yet the missing proportion is large (15-20% are missing); 2)impute missing values with the mode for the categorical host-related variable (i.e., ```response time```), because the majority of this variable fall into one category (77%) yet the missing proportion is large (15-20% are missing); 3) drop the missing values for other variables where the missing proportion is small (less than 2%) and the loss of data is negligible
 3. Create ```log price``` as the alternative outcome variable and drop the top 1% of the outliers of price (N = 2392) to address the severe outlier and skewness issues.
-4. Create ```host tenure``` as a host-related predictor in the unit of years, months and days.
-5. Recode ```property type``` to reduce the the number of categories by grouping rare types into "Other" category.
+4. Create ```host tenure``` as a host-related predictor in the unit of years, months, and days.
+5. Recode ```property type``` to reduce the number of categories by grouping rare types into the "Other" category.
+
+#### Final Data Description
+After data wrangling, this final dataset contains information about 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 and 2022-09-16 from [Kaggle](http://insideairbnb.com/get-the-data/).
 
 ### Data Analysis
-1. Model-free analysis: bivariate correlations for quantitative variables and omnibus ANOVA test for cateogrical variable to see if some predictors should be dropped in advance
-2. Search for the best model and parameters: used cross-validation-based method to search to compare the linear regression model with/without regularization and determine the parameters.
+1. Conduct Model-free analysis: 1) bivariate correlations for quantitative variables and 2) omnibus ANOVA tests for categorical variables to determine if some predictors may be dropped in advance
+2. Search for the best model and parameters using a cross-validation-based method. The search results suggest that the OLS regression model without regularization should be used because regularization does not improve the model fit. 
 ![CV_reg](https://user-images.githubusercontent.com/90875339/192400800-10ee7a9d-5542-43a5-a39a-3bfb496449b2.png)
-3. OLS model without regularization was selected and used for predicting both price and log transformed price because regularization does not improve the model fit. Instead, more features can be added in the follow-up project to improve the model fit.
 
-## Results & Key take-aways
-The OLS model, which regressed 68 features on log transformed price, yield a moderate model fit (R-squared = .61). The most strongest predictors include capacity--the number of guests can be accommodated and bedrooms, room type, city, review ratings. For full results, please see [this spreadsheet](https://github.com/jinyan0425/Airbnb/blob/8983b109729330ce215de88a1062269ea944a92c/OLS%20regression%20results.xlsx).
+## Project Conclusion
+### Results Overview
+The OLS regression model, which regressed 68 features on log-transformed price, yields a moderate model fit (R-squared = .61). The strongest predictors include capacity--the number of guests can be accommodated and bedrooms, room type, city, and review ratings.
 
-### Take-away 1
-There is substaintial difference in listing price across cities. Seaside cities enjoy a significant price premium, compared to urban cities, presumably due to the view premium. This finding is consistent with the [conclusion reached using Valencian regional data](https://www.mdpi.com/2071-1050/10/12/4596).
-![city_dif](https://user-images.githubusercontent.com/90875339/192404403-92559518-824d-462a-bf72-fd46c351e5c0.png)
+- For full results of the OLS regression models, please see [this spreadsheet](https://github.com/jinyan0425/Airbnb/blob/8983b109729330ce215de88a1062269ea944a92c/OLS%20regression%20results.xlsx).
 
-### Take-away 2
-Capacity of the accommodation measured in the maximum number of guests can be accommodated, the number of beds and the number of bedrooms, has a strong positive influence on listing price.
-![capacity_dif](https://user-images.githubusercontent.com/90875339/192404350-2b88e72d-7efb-4c9f-b08a-4aa81d48419c.png)
+- For full reports of the findings and the corresponding virsualization, please see [this post on Medium](https://medium.com/@jinyanxiang/predicting-the-airbnb-listing-price-a8458669d650).
 
+### Key Take-aways:
+1. There is a substantial regional difference: listings in regions that have views premium or/and are tourism hotspots (e.g., seaside cities) are more expensive than in other areas. This finding isconsistent with the [conclusion reached using Valencian regional data](https://www.mdpi.com/2071-1050/10/12/4596).
 
-### Take-away 3
-Property type and room type are critical categorical predictors, and the difference between propery types or/and room types could be partly attributed to capacity difference (e.g., villa is the most expensive type of property, and the average accommodates of it is 7 (vs. 4 across all types)) and view difference (e.g., entire home/apt is the mostcommon room type (87%) in seaside cities with ocean view)
-![room_property_dif](https://user-images.githubusercontent.com/90875339/192404296-ea064b01-3d19-4683-b2ab-a3e355280a73.png)
+2. Lodge capacity is the strongest predictor of listing price: the more guests a lodge can accommodate, the more expensive the listing is.
 
-### Take-away 4
-Most accommodation has a rating over 4 out of 5 in each of the seven rating dimensions (i.e., overall, accuracy (of the description), checkin, cleanliness, communication,location, value). Although ratings do affect listing price but its sign and magnititude vary by dimension (see the tabel below: DV = log price).
+3. Although listing price differs across property and room types, such difference can be partly attributed to the capacity difference. Interestingly, hotels (hotel rooms) have the most significant price premium after controlling for the capacity difference: they are more expensive in terms of listing price per guest.
+
+4. Ratings matter for predicting price, but the weight varies by dimension. Location and perceived value of the lodge matter most, while communication of the host and accuracy of the description have almost no impact.
 
 <div align="center">
   
@@ -66,12 +73,11 @@ Most accommodation has a rating over 4 out of 5 in each of the seven rating dime
 
 </div>
 
-![rating_dif](https://user-images.githubusercontent.com/90875339/192405808-b039e338-a248-432e-91d0-fbe57f849dea.png)
+5. Host tenure and host badges have negligible influence on price and are thus the weakest predictors.
 
+### Caveats
+1. Due to the limitation of OLS regression, all the conclusions are essentially observational and correlational, and any causal inference must be drawn cautiously.
 
-### Take-away 5
-Host tenure and their badges (i.e., super host or not, identify verified or not) have weak positive influence on lisiting price.
-![host_dif](https://user-images.githubusercontent.com/90875339/192404369-9b17196a-8088-468c-8da4-b72b23f16dd0.png)
+2. The moderate R-squared suggest that this model can be further improved by adding more features or higher-order features.
 
-### Final words
-These findings may also generate to other accommodation sharing platforms (e.g., Vrbo), and to other countries.
+3. Whether the findings can be generated for other accommodation sharing platforms (e.g., Vrbo) and other countries is subject to further investigation.
