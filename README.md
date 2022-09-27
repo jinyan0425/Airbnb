@@ -40,7 +40,7 @@ The critical steps in data wrangling are:
 3. OLS model without regularization was selected and used for predicting both price and log transformed price because regularization does not improve the model fit. Instead, more features can be added in the follow-up project to improve the model fit.
 
 ## Results & Key take-aways
-The OLS model, which regressed 68 features on log transformed price, yield a moderate model fit (R-squared = .61). The most strongest predictors include capacity--the number of guests can be accommodated and bedrooms, room type, city, review ratings. For full results, please see this spreadsheet.
+The OLS model, which regressed 68 features on log transformed price, yield a moderate model fit (R-squared = .61). The most strongest predictors include capacity--the number of guests can be accommodated and bedrooms, room type, city, review ratings. For full results, please see [this spreadsheet](https://github.com/jinyan0425/Airbnb/blob/8983b109729330ce215de88a1062269ea944a92c/OLS%20regression%20results.xlsx).
 
 ### Take-away 1
 There is substaintial difference in listing price across cities. Seaside cities enjoy a significant price premium, compared to urban cities, presumably due to the view premium. This finding is consistent with the [conclusion reached using Valencian regional data](https://www.mdpi.com/2071-1050/10/12/4596).
