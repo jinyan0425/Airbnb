@@ -66,7 +66,8 @@ Most accommodation has a rating over 4 out of 5 in each of the seven rating dime
 
 </div>
 
-![rating_dif](https://user-images.githubusercontent.com/90875339/192404327-9504697d-139b-4965-99bf-80d756263b8f.png)
+![rating_dif](https://user-images.githubusercontent.com/90875339/192405808-b039e338-a248-432e-91d0-fbe57f849dea.png)
+
 
 ### Take-away 5
 Host tenure and their badges (i.e., super host or not, identify verified or not) have weak positive influence on lisiting price.
