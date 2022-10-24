@@ -10,29 +10,35 @@
 2. [Project Motivation](#ProjectMotivation)
 3. [Project Goal](#ProjectGoal)
 4. [Project Method](#ProjectMethod)
-	 1. [Data Collection and Wrangling](#DataCollectionandWrangling)
-	 2. [Data Analysis](#DataAnalysis)
+	 1. [Libraries](#Libraries)
+	 2. [Data Collection and Wrangling](#DataCollectionandWrangling)
+	 3. [Data Analysis](#DataAnalysis)
 5. [Project Conclusion](#ProjectConclusion)
    1. [Results Overview](#ResultsOverview)
    2. [Key Take-aways](#KeyTake-aways)
    3. [Caveats](#Caveats)
 
+<a name="ProjectOverview"></a>
 ## Project Overview
 This project aims to understand the determinants of Airbnb listing price, using the listing data with 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 and 2022-09-16.
 
+<a name="ProjectMotivation"></a>
 ## Project Motivation
 Airbnb was founded in 2008 and has grown phenomenally to be the world’s largest accommodation/lodge sharing platform. It is operated in over 220 countries and regions and over 100,000 cities with 5.6 million active listings and 150 million users. For more statistics about Airbnb’s market size, user size, and economic impact, please read [this artile](https://www.thezebra.com/resources/home/airbnb-statistics/)).
 
 Understanding listing price is critical to the platform, hosts, and guests. Price is a significant determinant of a listing’s attractiveness and guests’ accommodation decisions which ultimately affects hosts’ income, the platform’s revenue, and the health of the host-guest sharing community and local economies. More broadly, it could profoundly influence hosts’ and guests’ long-term engagement in accommodation sharing (not limited to Airbnb) and the development of the sharing economy
 
+<a name="ProjectGoal"></a>
 ## Project Goal
 **The primary goal of this project is to understand the determinants of listing price or to predict listing price.** More specifically, it aims to study how:
 1. Environment-related factors (e.g., regional difference)
 2. Lodge-related factors (e.g., lodge capacity, lodge type)
 3. Host-related factors (e.g., host tenure) **affect listing price**
 
+<a name="ProjectMethod"></a>
 ## Project Method
 
+<a name="Libraries"></a>
 ### Libraries
 - ```urllib```,```gzip``` and ```shutil``` for collecting and proccessing datafiles
 - ```pandas``` for wrangling dataframes
@@ -40,6 +46,7 @@ Understanding listing price is critical to the platform, hosts, and guests. Pric
 - ```sklearn``` and ```statmodels``` for modeling
 - ```matplotlib``` and ```seaborn```for virsualizing
 
+<a name="DataCollectionandWrangling"></a>
 ### Data Collection and Wrangling
 
 #### Collection
@@ -56,12 +63,16 @@ The critical steps in data wrangling include:
 #### Final Data Description
 After data wrangling, this final dataset contains information about 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 and 2022-09-16 from [Kaggle](http://insideairbnb.com/get-the-data/).
 
+<a name="DataAnalysis"></a>
 ### Data Analysis
 1. Conduct Model-free analysis: 1) bivariate correlations for quantitative variables and 2) omnibus ANOVA tests for categorical variables to determine if some predictors may be dropped in advance
 2. Search for the best model and parameters using a cross-validation-based method. The search results suggest that the OLS regression model without regularization should be used because regularization does not improve the model fit. 
 ![CV_reg](https://user-images.githubusercontent.com/90875339/192400800-10ee7a9d-5542-43a5-a39a-3bfb496449b2.png)
 
+<a name="ProjectConclusion"></a>
 ## Project Conclusion
+
+<a name="ResultsOverview"></a>
 ### Results Overview
 The OLS regression model, which regressed 68 features on log-transformed price, yields a moderate model fit (R-squared = .61). The strongest predictors include capacity--the number of guests can be accommodated and bedrooms, room type, city, and review ratings.
 
@@ -69,6 +80,7 @@ The OLS regression model, which regressed 68 features on log-transformed price, 
 
 - For full reports of the findings and the corresponding virsualization, please see [this post on Medium](https://medium.com/@jinyanxiang/predicting-the-airbnb-listing-price-a8458669d650).
 
+<a name="KeyTake-aways"></a>
 ### Key Take-aways:
 1. There is a substantial regional difference: listings in regions that have views premium or/and are tourism hotspots (e.g., seaside cities) are more expensive than in other areas. This finding isconsistent with the [conclusion reached using Valencian regional data](https://www.mdpi.com/2071-1050/10/12/4596).
 
@@ -88,6 +100,7 @@ The OLS regression model, which regressed 68 features on log-transformed price, 
 
 5. Host tenure and host badges have negligible influence on price and are thus the weakest predictors.
 
+<a name="Caveats"></a>
 ### Caveats
 1. Due to the limitation of OLS regression, all the conclusions are essentially observational and correlational, and any causal inference must be drawn cautiously.
 
