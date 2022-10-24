@@ -7,12 +7,12 @@
 
 ## Table of Contents
 1. [Project Overview](#ProjectOverview)
-2. [Project Motivation](#ProjectMotivation)
-3. [Project Goal](#ProjectGoal)
+   1. [Project Motivation](#ProjectMotivation)
+   2. [Project Goal](#ProjectGoal)
 4. [Project Method](#ProjectMethod)
-	 1. [Libraries](#Libraries)
-	 2. [Data Collection and Wrangling](#DataCollectionandWrangling)
-	 3. [Data Analysis](#DataAnalysis)
+   1. [Libraries](#Libraries)
+   2. [Data Collection and Wrangling](#DataCollectionandWrangling)
+   3. [Data Analysis](#DataAnalysis)
 5. [Project Conclusion](#ProjectConclusion)
    1. [Results Overview](#ResultsOverview)
    2. [Key Take-aways](#KeyTake-aways)
@@ -23,13 +23,13 @@
 This project aims to understand the determinants of Airbnb listing price, using the listing data with 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 and 2022-09-16.
 
 <a name="ProjectMotivation"></a>
-## Project Motivation
+### Project Motivation
 Airbnb was founded in 2008 and has grown phenomenally to be the world’s largest accommodation/lodge sharing platform. It is operated in over 220 countries and regions and over 100,000 cities with 5.6 million active listings and 150 million users. For more statistics about Airbnb’s market size, user size, and economic impact, please read [this artile](https://www.thezebra.com/resources/home/airbnb-statistics/)).
 
 Understanding listing price is critical to the platform, hosts, and guests. Price is a significant determinant of a listing’s attractiveness and guests’ accommodation decisions which ultimately affects hosts’ income, the platform’s revenue, and the health of the host-guest sharing community and local economies. More broadly, it could profoundly influence hosts’ and guests’ long-term engagement in accommodation sharing (not limited to Airbnb) and the development of the sharing economy
 
 <a name="ProjectGoal"></a>
-## Project Goal
+### Project Goal
 **The primary goal of this project is to understand the determinants of listing price or to predict listing price.** More specifically, it aims to study how:
 1. Environment-related factors (e.g., regional difference)
 2. Lodge-related factors (e.g., lodge capacity, lodge type)
