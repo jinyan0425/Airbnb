@@ -4,6 +4,19 @@
 ![image](https://user-images.githubusercontent.com/90875339/192396927-6b705b6f-220e-41b9-943f-040d166c4686.png)
 </div>
 
+
+## Table of Contents
+1. [Project Overview](#ProjectOverview)
+2. [Project Motivation](#ProjectMotivation)
+3. [Project Goal](#ProjectGoal)
+4. [Project Method](#ProjectMethod)
+	 1. [Data Collection and Wrangling](#DataCollectionandWrangling)
+	 2. [Data Analysis](#DataAnalysis)
+5. [Project Conclusion](#ProjectConclusion)
+   1. [Results Overview](#ResultsOverview)
+   2. [Key Take-aways](#KeyTake-aways)
+   3. [Caveats](#Caveats)
+
 ## Project Overview
 This project aims to understand the determinants of Airbnb listing price, using the listing data with 236,823 unique listings in 31 cities and 19 states in the United States between 2022-06-08 and 2022-09-16.
 
